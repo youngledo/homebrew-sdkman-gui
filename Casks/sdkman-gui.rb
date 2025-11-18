@@ -1,17 +1,22 @@
 cask "sdkman-gui" do
-  version "1.0.0"
-  sha256 :no_check # 在正式发布时需要替换为实际的 SHA256
+  arch arm: "arm64", intel: "x86_64"
 
-  url "https://github.com/youngledo/sdkman-gui/releases/download/v#{version}/sdkman-gui_#{version}_arm64.dmg",
+  version "1.0.0"
+  sha256 arm:   "ARM64_SHA256_PLACEHOLDER",
+         intel: "X86_64_SHA256_PLACEHOLDER"
+
+  url "https://github.com/youngledo/sdkman-gui/releases/download/v#{version}/sdkman-gui_#{version}_#{arch}.dmg",
       verified: "github.com/youngledo/sdkman-gui"
   name "SDKMAN GUI"
-  desc "Modern graphical management tool for SDKMAN."
+  desc "Modern graphical management tool for SDKMAN"
   homepage "https://github.com/youngledo/sdkman-gui"
 
   livecheck do
     url :url
     strategy :github_latest
   end
+
+  depends_on macos: ">= :big_sur"
 
   app "SDKMAN GUI.app"
 
